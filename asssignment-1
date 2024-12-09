@@ -1,0 +1,57 @@
+# Base class
+class Smartphone:
+    def __init__(self, brand, model, battery_life, price):
+        self.brand = brand  # Public attribute
+        self.model = model  # Public attribute
+        self.__battery_life = battery_life  # Private attribute
+        self.__price = price  # Private attribute
+    
+    # Public method to get battery life
+    def get_battery_life(self):
+        return f"Battery life: {self.__battery_life} hours"
+    
+    # Public method to get price
+    def get_price(self):
+        return f"Price: ${self.__price}"
+    
+    # Public method to make a call
+    def make_call(self, phone_number):
+        return f"Calling {phone_number}..."
+
+    # Private method for internal use (encapsulation)
+    def __update_battery(self, new_battery_life):
+        self.__battery_life = new_battery_life
+
+    def display_info(self):
+        return f"{self.brand} {self.model} - {self.get_battery_life()} - {self.get_price()}"
+    
+# Inherited class
+class GamingSmartphone(Smartphone):
+    def __init__(self, brand, model, battery_life, price, game_mode):
+        super().__init__(brand, model, battery_life, price)  # Initialize parent class
+        self.game_mode = game_mode  # New attribute for gaming
+    
+    # Overriding the make_call method to include gaming mode
+    def make_call(self, phone_number):
+        return f"Gaming mode is on! But calling {phone_number}..."
+    
+    # New method exclusive to GamingSmartphone
+    def play_game(self, game_name):
+        return f"Playing {game_name} on {self.model}!"
+
+    # Overriding display_info to include game mode
+    def display_info(self):
+        base_info = super().display_info()
+        return f"{base_info} | Game Mode: {self.game_mode}"
+
+# Creating objects
+smartphone1 = Smartphone("Apple", "iPhone 14", 20, 999)
+gaming_phone = GamingSmartphone("Asus", "ROG Phone 6", 30, 999, "Extreme Gaming")
+
+# Using methods and attributes
+print(smartphone1.display_info())  # Display smartphone details
+print(smartphone1.make_call("123-456-7890"))
+
+print(gaming_phone.display_info())  # Display gaming smartphone details
+print(gaming_phone.make_call("987-654-3210"))
+print(gaming_phone.play_game("PUBG Mobile"))

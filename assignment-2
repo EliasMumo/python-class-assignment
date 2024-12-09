@@ -1,0 +1,40 @@
+# Base class
+class Vehicle:
+    def move(self):
+        raise NotImplementedError("Subclass must implement abstract method")
+
+# Subclass for Car
+class Car(Vehicle):
+    def move(self):
+        print("Driving 🚗")
+
+# Subclass for Plane
+class Plane(Vehicle):
+    def move(self):
+        print("Flying ✈️")
+
+# Subclass for Boat
+class Boat(Vehicle):
+    def move(self):
+        print("Sailing 🚤")
+
+# Subclass for Bicycle
+class Bicycle(Vehicle):
+    def move(self):
+        print("Pedaling 🚲")
+
+# Function to demonstrate polymorphism
+def demonstrate_move(vehicle):
+    vehicle.move()
+
+# Create objects of different vehicle types
+car = Car()
+plane = Plane()
+boat = Boat()
+bicycle = Bicycle()
+
+# Demonstrate the move method in action
+demonstrate_move(car)      # Output: Driving 🚗
+demonstrate_move(plane)    # Output: Flying ✈️
+demonstrate_move(boat)     # Output: Sailing 🚤
+demonstrate_move(bicycle)  # Output: Pedaling 🚲
